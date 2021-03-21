@@ -15,4 +15,4 @@ jobs:
           IONOS_API_KEY: ${{ secrets.IONOS_API_KEY }}
           IONOS_SSH_PUBLIC_KEY: ${{ secrets.IONOS_SSH_PUBLIC_KEY }}
           IONOS_SERVER_NAME: ${{ secrets.IONOS_SERVER_NAME }}
-        run: docker build -t bootstrap-ionos-server:latest . && docker run --rm bootstrap-ionos-server:latest
+        run: docker build -t bootstrap-ionos-server:latest . && docker run --rm -e "IONOS_API_KEY=$IONOS_API_KEY" -e "IONOS_SSH_PUBLIC_KEY=$IONOS_SSH_PUBLIC_KEY -e "IONOS_SERVER_NAME=$IONOS_SERVER_NAME" bootstrap-ionos-server:latest
