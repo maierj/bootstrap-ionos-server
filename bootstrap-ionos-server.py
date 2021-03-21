@@ -12,6 +12,7 @@ def main():
     api_key = os.environ["IONOS_API_KEY"]
 
     request_headers = {
+        "Content-Type": "application/json",
         "X-Token": api_key
     }
 
