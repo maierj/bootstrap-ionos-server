@@ -6,6 +6,7 @@ import json
 
 base_url = "https://cloudpanel-api.ionos.com/v1"
 
+
 def main():
     server_name = os.environ["IONOS_SERVER_NAME"]
     ssh_public_key = os.environ["IONOS_SSH_PUBLIC_KEY"]
@@ -40,7 +41,10 @@ def main():
 
     response = requests.post("%s/servers" % base_url, headers=request_headers, data=json.dumps(request_body))
 
-    print("Received response: %s" % response.text)
+    response_object = response.json()
+    hostname = response_object["hostname"]
+
+    print("POST Status Code: %d" % response.status_code)
 
 
 if __name__ == "__main__":
