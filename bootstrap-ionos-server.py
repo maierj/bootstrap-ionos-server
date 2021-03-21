@@ -42,7 +42,7 @@ def main():
 
     response = requests.post("%s/servers" % base_url, headers=request_headers, data=json.dumps(request_body))
 
-    print(response)
+    print("Received response: %s" % response.text)
 
 
 if __name__ == "__main__":
