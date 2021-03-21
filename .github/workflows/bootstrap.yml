@@ -9,6 +9,7 @@ jobs:
   bootstrap:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Run bootstrapping script
         env:
           IONOS_API_KEY: ${{ secrets.IONOS_API_KEY }}
