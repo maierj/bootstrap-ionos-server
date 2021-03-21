@@ -1,0 +1,17 @@
+name: Bootstrap
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run bootstrapping script
+        env:
+          IONOS_API_KEY: ${{ secrets.IONOS_API_KEY }}
+          IONOS_SSH_PUBLIC_KEY: ${{ secrets.IONOS_SSH_PUBLIC_KEY }}
+          IONOS_SERVER_NAME: ${{ secrets.IONOS_SERVER_NAME }}
+        run: docker build -t bootstrap-ionos-server:latest . && docker run --rm bootstrap-ionos-server:latest
